@@ -10,3 +10,4 @@ RATINGS_FILES = [
 
 DATA = os.path.join(BASE_DIR,'output.parquet')
 
+RETRIEVAL_EPOCHS = 3

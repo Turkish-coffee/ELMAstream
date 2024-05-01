@@ -11,7 +11,7 @@ in charge the creation of model instance
 def build_retrieval_system( embedding_dim : int,
                             query_vocabulary: np.array,
                             candidate_vocabulary: np.array ) -> tfrs.Model:
-  
+  print("building retrieval model ...")
   user_model = tf.keras.Sequential([
     tf.keras.layers.IntegerLookup(
         vocabulary=query_vocabulary, mask_token=None),

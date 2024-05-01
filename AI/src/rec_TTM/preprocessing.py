@@ -1,7 +1,9 @@
 import os
 from typing import Dict, List
 from config import BASE_DIR, RATINGS_FILES, DATA
-
+import polars as pl
+import numpy as np
+from typing import Iterator, Tuple
 
 '''
 this function will take the raw data provided by netflix and
@@ -49,11 +51,24 @@ def process_data(files: List[str]) -> None:
 
 """
 this function is in charge of loading data in a more efficient
-way, using spark to create multiple homogenous partitions from
+way, using polar to create multiple homogenous partitions from
 the huge base parquet file
+the function will return the df iterator as well as the query
+and candidate vocabulary needed to build the model.
 """
-def load_data() -> None:
-    pass
+def load_data() -> Tuple[Iterator[pl.DataFrame], np.array, np.array]:
+    # len df : 100_480_507 data
+    print("fetching data ...")
+    df : pl.DataFrame = pl.read_parquet(source=DATA, columns=['movie_id','user_id'])
+    # storing vocabulary (user / item) to define embbedings later on 
+    candidate_vocab = np.unique(list(df['movie_id']))
+    query_vocab = np.unique(list(df['user_id']))
+    # divide data into smaller chunks of data to not overload the RAM 
+    # and allow computations
+    df = df.iter_slices(n_rows=100_000) # from this line df is an iterator
+    print("data fetched successfully")
+    return df, candidate_vocab, query_vocab
+
 
 if __name__ == "__main__":
     #process_data(RATINGS_FILES)
