@@ -1,6 +1,6 @@
 import os
 
-BASE_DIR = os.path.abspath(os.path.join(__file__, '../../../data/netflix_recommendations'))  
+BASE_DIR = os.path.abspath(os.path.join(__file__, '../../../../../data/netflix_recommendations'))  
 RATINGS_FILES = [
     os.path.join(
         BASE_DIR ,

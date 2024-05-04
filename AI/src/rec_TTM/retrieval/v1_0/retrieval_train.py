@@ -1,7 +1,7 @@
 import polars as pl
 import tensorflow as tf
 import tensorflow_recommenders as tfrs
-from config import RETRIEVAL_EPOCHS
+from rec_TTM.retrieval.v1_0.config import RETRIEVAL_EPOCHS
 
 '''
 this function is a trainer wrapper :

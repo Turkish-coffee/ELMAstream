@@ -1,7 +1,7 @@
 import tensorflow as tf
-from preprocessing import load_data
-from retrieval_model import build_retrieval_system
-from retrieval_train import train_model
+from rec_TTM.utils.preprocessing import load_data
+from rec_TTM.retrieval.v1_0.retrieval_model import build_retrieval_system
+from rec_TTM.retrieval.v1_0.retrieval_train import train_model
 
 def main() -> None:
   df, unique_movie_titles, unique_user_ids = load_data()

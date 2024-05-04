@@ -1,9 +1,10 @@
 import os
-from typing import Dict, List
-from config import BASE_DIR, RATINGS_FILES, DATA
 import polars as pl
 import numpy as np
+from typing import Dict, List
 from typing import Iterator, Tuple
+from rec_TTM.retrieval.v1_0.config import BASE_DIR, RATINGS_FILES, DATA
+
 
 '''
 this function will take the raw data provided by netflix and
