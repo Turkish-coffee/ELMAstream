@@ -6,6 +6,8 @@ AI/data
 AI/img
 AI/models
 .vscode
+.DS_Store
+.gitignore
 
 #############################
 ####### TEMPLATE FILE #######

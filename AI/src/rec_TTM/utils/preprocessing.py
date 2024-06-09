@@ -71,6 +71,12 @@ def load_data() -> Tuple[Iterator[pl.DataFrame], np.array, np.array]:
     return df, candidate_vocab, query_vocab
 
 
+def map_movie_id_to_titles(movie_ids : List[int], df : pl.DataFrame):
+    # map the dataframe with the movie_ids
+    titles = df.filter(pl.col('movie_id').is_in(movie_ids))
+    return titles['movie_title'].to_list()
+
+
 if __name__ == "__main__":
     #process_data(RATINGS_FILES)
     load_data()
