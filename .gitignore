@@ -4,6 +4,8 @@
 
 AI/data
 AI/img
+AI/models
+.vscode
 
 #############################
 ####### TEMPLATE FILE #######
